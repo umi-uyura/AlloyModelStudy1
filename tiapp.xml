@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ti:app 
+<ti:app
   xmlns:ti="http://ti.appcelerator.org">
   <id>com.example.alloymodelstudy1</id>
   <name>AlloyModelStudy1</name>
@@ -43,7 +43,7 @@
     <manifest xmlns:android="http://schemas.android.com/apk/res/android"
               android:versionCode="1" android:versionName="0.0.1"
               android:installLocation="preferExternal">
-      <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21"/>
+      <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23"/>
     </manifest>
   </android>
   <mobileweb>
@@ -62,7 +62,7 @@
     <target device="mobileweb">false</target>
     <target device="windows">false</target>
   </deployment-targets>
-  <sdk-version>5.1.0.GA</sdk-version>
+  <sdk-version>5.1.1.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
