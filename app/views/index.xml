@@ -1,5 +1,1 @@
-<Alloy>
-	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
-	</Window>
-</Alloy>
+<Alloy><Collection src="memo"/><Window title="Alloy Model Study1" onOpen="doOpen" class="container"><View class="controller"><TextField id="memoText"></TextField><Button id="addButton" title="Add" onClick="addText"></Button></View><ListView id="memoList"><ListSection dataCollection="memo"><ListItem title="{contents}"/></ListSection></ListView></Window></Alloy>
