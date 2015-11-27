@@ -36,30 +36,20 @@ function clickItem(e) {
 
       Ti.API.debug('Click id = ' + itemId);
 
-      // var m = memos.findWhere({id: itemId});
-      var m = memos.findWhere({contents: text});
-      // var mdl = Alloy.createModel('memo', {id: itemId});
-      // var m = memos.where(mdl);
-      Ti.API.debug('m = ' + JSON.stringify(m));
+      var m = null;
+      if (OS_IOS) {
+        m = memos.findWhere({id: itemId});
+      } else if (OS_ANDROID) {
+        m = memos.findWhere({contents: text});
+      }
 
-      // for ios
-      //
-      // Ti.API.debug('m = ' + m[0].id);
-      //
-      // Ti.API.debug(memos.toJSON());
-      //
-      // memos.remove(m);
-      //
-      // Ti.API.debug(memos.toJSON());
+      Ti.API.debug('m = ' + JSON.stringify(m));
 
       if (m) {
         Ti.API.debug('model 1 - ' + JSON.stringify(memos));
         Ti.API.debug('model 1-2 - ' + JSON.stringify(m));
-        // Ti.API.debug('model 1-3 - ' + JSON.stringify(m[0]));
-        // Ti.API.debug('model 1-4 - ' + JSON.stringify(m[0].id));
 
         memos.remove(m);
-        //m.destory();
 
         Ti.API.debug('model 2 - ' + JSON.stringify(memos));
       }
