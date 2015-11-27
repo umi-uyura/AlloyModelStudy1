@@ -36,12 +36,14 @@ function clickItem(e) {
 
       Ti.API.debug('Click id = ' + itemId);
 
-      var m = null;
-      if (OS_IOS) {
-        m = memos.findWhere({id: itemId});
-      } else if (OS_ANDROID) {
-        m = memos.findWhere({contents: text});
+      Ti.API.debug('Type check = ' + Object.prototype.toString.call(1));
+      Ti.API.debug('Type check = ' + Object.prototype.toString.call(itemId));
+
+      if (OS_ANDROID) {
+        itemId = parseInt(itemId);
       }
+
+      var m = memos.findWhere({id: itemId});
 
       Ti.API.debug('m = ' + JSON.stringify(m));
 
@@ -49,7 +51,7 @@ function clickItem(e) {
         Ti.API.debug('model 1 - ' + JSON.stringify(memos));
         Ti.API.debug('model 1-2 - ' + JSON.stringify(m));
 
-        memos.remove(m);
+        m.destroy();
 
         Ti.API.debug('model 2 - ' + JSON.stringify(memos));
       }
