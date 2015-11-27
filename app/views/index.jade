@@ -4,6 +4,6 @@ Alloy
     View.controller
       TextField#memoText
       Button#addButton(title="Add", onClick="addText")
-    ListView#memoList
+    ListView#memoList(onItemclick="clickItem")
       ListSection(dataCollection="memo")
-        ListItem(title="{contents}")/
+        ListItem(title="{contents}", itemId="{id}")/
