@@ -8,6 +8,5 @@
   "os:ios": {},
   "os:mobileweb": {},
   "os:windows": {},
-  "dependencies": {},
-  "backbone": "1.1.2"
+  "dependencies": {}
 }

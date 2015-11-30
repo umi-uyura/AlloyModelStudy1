@@ -29,31 +29,26 @@ function clickItem(e) {
   var text = $.memoList.sections[e.sectionIndex].items[e.itemIndex].properties.title;
 
   dialogs.confirm({
-    title: 'Delete ok?',
+    title: 'Do you want to delete ?',
     message: '"' + text + '"',
     callback: function() {
-      Ti.API.debug('memo = ' + JSON.stringify(memos));
+      Ti.API.debug('memos = ' + JSON.stringify(memos));
 
       Ti.API.debug('Click id = ' + itemId);
-
-      Ti.API.debug('Type check = ' + Object.prototype.toString.call(1));
       Ti.API.debug('Type check = ' + Object.prototype.toString.call(itemId));
 
       if (OS_ANDROID) {
         itemId = parseInt(itemId);
       }
 
-      var m = memos.findWhere({id: itemId});
+      var m = memos.where({id: itemId});
 
       Ti.API.debug('m = ' + JSON.stringify(m));
 
-      if (m) {
-        Ti.API.debug('model 1 - ' + JSON.stringify(memos));
-        Ti.API.debug('model 1-2 - ' + JSON.stringify(m));
+      if (m.length) {
+        m[0].destroy();
 
-        m.destroy();
-
-        Ti.API.debug('model 2 - ' + JSON.stringify(memos));
+        Ti.API.debug('memos = ' + JSON.stringify(memos));
       }
     }
   });
