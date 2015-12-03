@@ -1,0 +1,7 @@
+Window.container(title="Alloy Model Study 1", onOpen="doOpen")
+  View.controller
+    TextField#memoText()/
+    Button#addButton(title="Add", onClick="addText")/
+  ListView#memoList(onItemclick="clickItem")
+    ListSection(dataCollection="memo")
+      ListItem(title="{contents}", itemId="{id}")/

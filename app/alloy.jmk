@@ -12,11 +12,24 @@ task("pre:compile", function(event, logger) {
   // jade
   event.alloyConfig.xml = [];
   wrench.readdirSyncRecursive(view_root).forEach(function(view) {
-    if (view.match(/.jade$/)) {
+    if (view.match(/\.jade$/)) {
       event.alloyConfig.xml.push(view.replace(/\.jade$/, ".xml"));
+      var jadeOption = {
+        filename: path.join(view_root, view),
+        pretty: (event.alloyConfig.deploytype === "development"),
+        compileDebug: (event.alloyConfig.deploytype !== "production")
+      };
       fs.writeFileSync(
         path.join(view_root, view.replace(/\.jade$/, ".xml")),
-        jade.compile(fs.readFileSync(path.join(view_root, view)).toString())(event));
+        jade.compile(fs.readFileSync(path.join(view_root, view)).toString(), jadeOption)(event));
+    }
+  });
+
+  // Files that start with '_' ,
+  // because is to use in `include` of Jade, it should be deleted here
+  event.alloyConfig.xml.forEach(function(view) {
+    if (view.match(/^_\S*.xml$/g)) {
+      fs.unlinkSync(path.join(view_root, view));
     }
   });
   // ~jade
