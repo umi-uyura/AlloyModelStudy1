@@ -9,7 +9,7 @@ task("pre:compile", function(event, logger) {
       view_root = event.dir.views,
       style_root = event.dir.styles;
 
-  // jade
+  // jade //////////////////////////////////////////////////
   event.alloyConfig.xml = [];
   wrench.readdirSyncRecursive(view_root).forEach(function(view) {
     if (view.match(/\.jade$/)) {
@@ -32,9 +32,9 @@ task("pre:compile", function(event, logger) {
       fs.unlinkSync(path.join(view_root, view));
     }
   });
-  // ~jade
+  // ~jade /////////////////////////////////////////////////
 
-  // stylus
+  // stylus ////////////////////////////////////////////////
   event.alloyConfig.stylus = [];
   var compileTSS = function(root, target) {
     var data = fs.readFileSync(path.join(root, target), "utf8"),
@@ -90,7 +90,7 @@ task("pre:compile", function(event, logger) {
       fs.writeFileSync(path.join(style_root, view.replace("styl", "tss")), tss);
     }
   });
-  // ~stylus
+  // ~stylus ///////////////////////////////////////////////
 });
 
 task("post:compile", function(event, logger) {
