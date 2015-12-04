@@ -1,7 +1,14 @@
+mixin mainWindow(platform)
+  Window.container(title="Alloy Model Study 1", onOpen="doOpen", platform=platform)
+    View.controller
+      TextField#memoText()/
+      Button#addButton(title="Add", onClick="addText")/
+    ListView#memoList(onItemclick="clickItem")
+      ListSection(dataCollection="memo")
+        ListItem(title="{contents}", itemId="{id}")/
+
 Alloy
   Collection(src="memo")/
-  if alloyConfig.platform === "ios"
-    NavigationWindow
-      include ./_index_main.jade
-  if alloyConfig.platform === "android"
-    include ./_index_main.jade
+  NavigationWindow(platform="ios")
+    +mainWindow("ios")
+  +mainWindow("android")

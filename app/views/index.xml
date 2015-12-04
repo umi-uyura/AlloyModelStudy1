@@ -1,8 +1,8 @@
 
 <Alloy>
   <Collection src="memo"/>
-  <NavigationWindow>
-    <Window title="Alloy Model Study 1" onOpen="doOpen" class="container">
+  <NavigationWindow platform="ios">
+    <Window title="Alloy Model Study 1" onOpen="doOpen" platform="ios" class="container">
       <View class="controller">
         <TextField id="memoText"/>
         <Button id="addButton" title="Add" onClick="addText"/>
@@ -14,4 +14,15 @@
       </ListView>
     </Window>
   </NavigationWindow>
+  <Window title="Alloy Model Study 1" onOpen="doOpen" platform="android" class="container">
+    <View class="controller">
+      <TextField id="memoText"/>
+      <Button id="addButton" title="Add" onClick="addText"/>
+    </View>
+    <ListView id="memoList" onItemclick="clickItem">
+      <ListSection dataCollection="memo">
+        <ListItem title="{contents}" itemId="{id}"/>
+      </ListSection>
+    </ListView>
+  </Window>
 </Alloy>
