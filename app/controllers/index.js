@@ -11,12 +11,12 @@ function doOpen() {
 function addText() {
   var txt = $.memoText.getValue();
 
-  var td = Alloy.createModel('memo', {
+  var m = Alloy.createModel('memo', {
     contents: txt
   });
 
-  memos.add(td);
-  td.save();
+  m.save();
+  memos.add(m);
   memos.fetch();
 
   $.memoText.setValue('');
